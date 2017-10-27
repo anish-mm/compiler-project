@@ -1,1 +1,6 @@
-int if = != > int
+int t_ =  5;
+char ast;
+if (2=3)
+{
+t=3;
+}
