@@ -34,3 +34,4 @@ noquote = [^"];
 {quote}{noquote}*{quote} => (Tokens.STRING(yytext, yypos, yypos + size yytext));
 "\n"                     => (continue());
 
+. 			 => (continue());
