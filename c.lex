@@ -13,7 +13,7 @@ noquote = [^"];
 %%
 
 <INITIAL>"int" 	=> (Tokens.INT(yypos, yypos + size yytext));
-<INITIAL>"char" => (Tokens.CHAR(yypos, yypos + size yytext);
+<INITIAL>"char" => (Tokens.CHAR(yypos, yypos + size yytext));
 <INITIAL>"if"	=> (Tokens.IF(yypos, yypos + size yytext));
 <INITIAL>"="	=> (Tokens.EQ(yypos, yypos + size yytext));
 <INITIAL>"!=" 	=> (Tokens.NEQ(yypos, yypos + size yytext));
