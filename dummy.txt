@@ -1,6 +1,11 @@
-int t_ =  5;
+int t_ =  5,g = 0;
 char ast;
 if (2=3)
 {
 t=3;
 }
+else{
+9 = 6;
+}
+while(0 = 1||v = 5 && g= k){
+ g = 6 % 2}
