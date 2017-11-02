@@ -4,7 +4,7 @@ struct
     type token 		= string
     fun INT(i, j) 	= "INT  " ^ Int.toString(i)
     fun CHAR(i, j)  	= "CHAR  " ^ Int.toString(i)
-    fun INTVAL(c, i, j) = "INT("^c^")  " ^ Int.toString(i)
+    fun INTVAL(c, i, j) = "INTEGER("^c^")  " ^ Int.toString(i)
     fun STRING(s, i, j) = "STRING("^s^")  " ^ Int.toString(i)
     fun IF(i, j) 	= "IF  " ^ Int.toString(i)
     fun ELSE(i, j) 	= "ELSE  " ^ Int.toString(i)
