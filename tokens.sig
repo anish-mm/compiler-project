@@ -7,7 +7,7 @@ sig
     val INTVAL : token * linenum * linenum -> token
     val STRING : token * linenum * linenum -> token
     val ID : token * linenum * linenum -> token
-    val COMA : linenum * linenum -> token
+    val COMMA : linenum * linenum -> token
 
     val IF : linenum * linenum -> token
     val ELSE : linenum * linenum -> token

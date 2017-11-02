@@ -28,7 +28,7 @@ struct
     fun WHILE(i,j) 	= "WHILE   " ^ Int.toString(i)
     fun OR(i,j) 	= "OR   " ^ Int.toString(i)
     fun AND(i,j) 	= "AND   " ^ Int.toString(i)
-    fun COMA(i,j) 	= "COMA   " ^ Int.toString(i)
+    fun COMMA(i,j) 	= "COMMA   " ^ Int.toString(i)
     fun MOD(i,j) 	= "MOD   " ^ Int.toString(i)
 end 
 

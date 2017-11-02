@@ -35,7 +35,7 @@ noquote = [^"];
 <INITIAL>")"    	 => (Tokens.RPAREN(yypos, yypos + size yytext));
 <INITIAL>"{"    	 => (Tokens.LCURLY(yypos, yypos + size yytext));
 <INITIAL>"}"    	 => (Tokens.LCURLY(yypos, yypos + size yytext));
-<INITIAL>","    	 => (Tokens.COMA(yypos, yypos + size yytext));
+<INITIAL>","    	 => (Tokens.COMMA(yypos, yypos + size yytext));
 
 
 {id}                     => (Tokens.ID(yytext, yypos, yypos + size yytext));
