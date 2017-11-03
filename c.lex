@@ -1,5 +1,6 @@
 
 type pos = int
+val linenum = ref 1
 type lexresult = Tokens.token
 fun eof() = Tokens.EOF()
 
@@ -42,7 +43,7 @@ noquote = [^"];
 {space}+        	 => (continue());
 {digit}+                 => (Tokens.INTVAL(yytext, yypos, yypos + size yytext));
 {quote}{noquote}*{quote} => (Tokens.STRING(yytext, yypos, yypos + size yytext));
-"\n"                     => (continue());
+"\n"                     => (linenum := (!linenum) + 1; continue());
 
 . 			 => (continue());
 
