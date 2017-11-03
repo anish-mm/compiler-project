@@ -3,6 +3,7 @@ type pos = int
 val linenum = ref 1
 type lexresult = Tokens.token
 fun eof() = Tokens.EOF()
+val error = fn x => TextIO.output(TextIO.stdOut, x ^ "\n")
 
 %%
 space = [\ \t];
@@ -45,6 +46,6 @@ noquote = [^"];
 {quote}{noquote}*{quote} => (Tokens.STRING(yytext, yypos, yypos + size yytext));
 "\n"                     => (linenum := (!linenum) + 1; continue());
 
-. 			 => (continue());
+. 			 => (error("unknown character found : " ^ yytext ^ "on line : " ^Int.toString(!linenum)); continue());
 
 
