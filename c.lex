@@ -46,6 +46,6 @@ noquote = [^"];
 {quote}{noquote}*{quote} => (Tokens.STRING(yytext, yypos, yypos + size yytext));
 "\n"                     => (linenum := (!linenum) + 1; continue());
 
-. 			 => (error("unknown character found : " ^ yytext ^ "on line : " ^Int.toString(!linenum)); continue());
+. 			 => (error("unknown character " ^ yytext ^ " found on line : " ^Int.toString(!linenum)); continue());
 
 
