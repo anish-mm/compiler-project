@@ -19,6 +19,7 @@ noquote = [^"];
 <INITIAL>if 	         => (Tokens.IF(yypos, yypos + size yytext));
 <INITIAL>else    	 => (Tokens.ELSE(yypos, yypos + size yytext));
 <INITIAL>while    	 => (Tokens.WHILE(yypos, yypos + size yytext));
+<INITIAL>"!"             => (Tokens.NOT(yypos, yypos + size yytext));
 <INITIAL>"|"    	 => (Tokens.OR(yypos, yypos + size yytext));
 <INITIAL>"&"    	 => (Tokens.AND(yypos, yypos + size yytext));
 <INITIAL>"=="	         => (Tokens.EQ(yypos, yypos + size yytext));
