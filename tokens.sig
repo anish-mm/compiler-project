@@ -6,6 +6,7 @@ sig
     val CHAR : linenum * linenum -> token
     val INTVAL : token * linenum * linenum -> token
     val STRING : token * linenum * linenum -> token
+    val ASSIGN : linenum * linenum -> token
     val ID : token * linenum * linenum -> token
     val COMMA : linenum * linenum -> token
 
@@ -14,6 +15,7 @@ sig
     val WHILE : linenum * linenum -> token
     val OR : linenum * linenum -> token
     val AND : linenum * linenum -> token
+    val NOT : linenum * linenum -> token
 
     val EQ : linenum * linenum -> token
     val NEQ : linenum * linenum -> token
