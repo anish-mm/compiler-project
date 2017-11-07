@@ -16,12 +16,13 @@ noquote = [^"];
 
 <INITIAL>int    	 => (Tokens.INT(yypos, yypos + size yytext));
 <INITIAL>char            => (Tokens.CHAR(yypos, yypos + size yytext));
+<INITIAL>assign          => (Tokens.ASSIGN(yypos, yypos + size yytext));
 <INITIAL>if 	         => (Tokens.IF(yypos, yypos + size yytext));
 <INITIAL>else    	 => (Tokens.ELSE(yypos, yypos + size yytext));
 <INITIAL>while    	 => (Tokens.WHILE(yypos, yypos + size yytext));
 <INITIAL>"|"    	 => (Tokens.OR(yypos, yypos + size yytext));
 <INITIAL>"&"    	 => (Tokens.AND(yypos, yypos + size yytext));
-<INITIAL>"="	         => (Tokens.EQ(yypos, yypos + size yytext));
+<INITIAL>"=="	         => (Tokens.EQ(yypos, yypos + size yytext));
 <INITIAL>"!="    	 => (Tokens.NEQ(yypos, yypos + size yytext));
 <INITIAL>">"    	 => (Tokens.GT(yypos, yypos + size yytext));
 <INITIAL>"<"    	 => (Tokens.LT(yypos, yypos + size yytext));

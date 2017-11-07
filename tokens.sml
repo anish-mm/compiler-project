@@ -1,9 +1,10 @@
 structure Tokens : TOKENS = 
 struct
     type linenum 	= int
-    type token 		= string
+    type token 	= string
     fun INT(i, j) 	= "INT  " ^ Int.toString(i)
     fun CHAR(i, j)  	= "CHAR  " ^ Int.toString(i)
+    fun ASSIGN(i, j)    = "ASSIGN  " ^ Int.toString(i)
     fun INTVAL(c, i, j) = "INTEGER("^c^")  " ^ Int.toString(i)
     fun STRING(s, i, j) = "STRING("^s^")  " ^ Int.toString(i)
     fun IF(i, j) 	= "IF  " ^ Int.toString(i)
