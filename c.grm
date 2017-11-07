@@ -1,0 +1,95 @@
+
+%%
+%name c_
+%pos int
+%term
+      EOF
+    | INT | CHAR
+    | ID of string
+    | INTVAL of int | STRING of string
+    | IF | ELSE | WHILE
+    | ASSIGN
+    | OR | AND | NOT
+    | EQ | NEQ | GT | LT | GEQ | LEQ 
+    | PLUS | MINUS | DIV | MUL | MOD
+    | SEMICOLON | COMMA | LCURLY | RCURLY | RPAREN | LPAREN
+
+%nonterm
+      Program of Ast.stmt list | ExpStmt of Ast.stmt | ComStmt of Ast.stmt | SelStmt of Ast.stmt | ItrStmt of Ast.stmt | Stmt of Ast.stmt | Stmts of Ast.stmt list | Exp of Ast.stmt | SimExp of Ast.stmt | AndExp of Ast.stmt | UnRelExp of Ast.stmt | RelExp of Ast.stmt | SumExp of Ast.stmt | RelOp of Ast.binOp | SumOp of Ast.binOp | Term of Ast.stmt | UnExp of Ast.stmt | MulOp of Ast.binOp | UnOp of Ast.unOp | Factor of Ast.stmt | Immut of Ast.immut
+
+%start Program
+%keyword IF WHILE ELSE INT CHAR
+%eop EOF
+%noshift EOF
+%nodefault
+%verbose
+
+%%
+
+Program : Stmts ()
+
+Stmts : Stmt Stmts ()
+
+Stmt : ExpStmt  ()
+     | ComStmt  ()
+     | SelStmt  ()
+     | ItrStmt  ()
+
+ExpStmt : Exp SEMICOLON        ()
+        | SEMICOLON            ()
+
+SelStmt : IF LPAREN SimExp RPAREN Stmt ELSE Stmt  (Ast.IfStmt(SimExp, Stmt1, Stmt2))
+        | IF LPAREN SimExp RPAREN Stmt  (Ast.IfStmt(SimExp, Stmt, Ast.EmptyStmt))
+         
+ItrStmt : WHILE LPAREN SimExp RPAREN ComStmt (Ast.WhileStmt(SimExp, ComStmt))
+
+ComStmt : LCURLY Stmts RCURLY (Ast.CompStmt(Stmts))
+
+Exp : ID ASSIGN Exp (Ast.AssignStmt(ID, Exp))
+    | SimExp ()
+
+SimExp : AndExp OR SimExp (Ast.OpStmt(AndExp, Ast.Or, SimExp))
+       | AndExp           ()
+
+AndExp : UnRelExp AND AndExp (Ast.OpStmt(UnRelExp, Ast.And, AndExp))
+       | UnRelExp  ()
+
+UnRelExp : NOT UnRelExp (Ast.UnOpStmt(Ast.Not, UnRelExp))
+         | RelExp  ()
+
+RelExp : SumExp RelOp SumExp  (Ast.BinOpStmt(SumExp, RelOp, SumExp))
+       | SumExp  ()
+
+RelOp   : EQ  (Ast.Eq)
+        | NEQ (Ast.Neq)
+        | GT  (Ast.Gt)
+        | LT  (Ast.Lt)
+        | GEQ (Ast.Geq)
+        | LEQ (Ast.Leq)
+
+SumExp : Term SumOp SumExp  (Ast.BinOpStmt(Term, SumOp, SumExp))
+       | Term               ()
+
+SumOp : PLUS (Ast.Plus)
+      | MINUS (Ast.Minus)
+
+Term : UnExp MulOp Term  (Ast.BinOpStmt(UnExp, MulOp, Term))
+     | UnExp   ()
+
+MulOp : MUL (Ast.Mul)
+      | DIV (Ast.Div)
+      | MOD (Ast.Mod)
+
+UnExp : UnOp UnExp (Ast.UnOpStmt(UnOp, UnExp))
+      | Factor ()
+
+UnOp : PLUS (Ast.Plus)
+     | MINUS (Ast.Minus)
+
+Factor : ID  (Ast.Variable(ID))
+       | Immut ()
+
+Immut : LPAREN Exp RPAREN ()
+      | INTVAL (Ast.Const(Ast.Integer(INTVAL)))
+      | STRING (Ast.Const(Ast.String(STRING)))
+     
