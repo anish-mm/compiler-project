@@ -6,6 +6,7 @@ fun eof() = Tokens.EOF()
 val error = fn x => TextIO.output(TextIO.stdOut, x ^ "\n")
 
 %%
+%header (functor CLexFun(structure Tokens:C_TOKENS));
 space = [\ \t];
 letter = [a-zA-Z];
 digit = [0-9];
