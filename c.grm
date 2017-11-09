@@ -46,7 +46,7 @@ ItrStmt : WHILE LPAREN SimExp RPAREN ComStmt (Ast.WhileStmt(SimExp, ComStmt))
 
 ComStmt : LCURLY Stmts RCURLY (Ast.CompStmt(Stmts))
 
-Exp : ID ASSIGN Exp (Ast.AssignStmt(ID, Exp))
+Exp : ID ASSIGN Exp (Ast.AssignStmt(Ast.Var(ID), Exp))
     | SimExp ()
 
 SimExp : AndExp OR SimExp (Ast.OpStmt(AndExp, Ast.Or, SimExp))
