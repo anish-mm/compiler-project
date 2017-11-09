@@ -43,7 +43,7 @@ functor Converter (Conv:CONVSIG) : CONVERTER =
                           | Ast.WhileStmt(x, y)            => Conv.convWhileStmt(convExp(x), convStmt(y))
                           | Ast.CompStmt(x)                => Conv.convCompStmt(convStmts(x))
 
-    fun convStmts (stmts) = case stmts  of
+    fun convStmts (stmts) = case stmts of
                               x::xs => convStmt(x) ^ convStmts(xs)
                            |  []    => ""
   end
