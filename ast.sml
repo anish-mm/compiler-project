@@ -12,7 +12,7 @@ struct
                    | Const of immut
                    | Variable of mut
                    | AssignStmt of mut * stmt
-                   | DeclStmt of types * mut
+                   | DeclStmt of types * stmt
                    | IfStmt of stmt * stmt * stmt
                    | BinOpStmt of stmt * binOp * stmt
                    | UnOpStmt of unOp * stmt

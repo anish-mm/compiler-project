@@ -15,7 +15,7 @@
     | SEMICOLON | COMMA | LCURLY | RCURLY | RPAREN | LPAREN
 
 %nonterm
-      Program of Ast.stmt list | ExpStmt of Ast.stmt | ComStmt of Ast.stmt | SelStmt of Ast.stmt | ItrStmt of Ast.stmt | Stmt of Ast.stmt | Stmts of Ast.stmt list | Exp of Ast.stmt | SimExp of Ast.stmt | AndExp of Ast.stmt | UnRelExp of Ast.stmt | RelExp of Ast.stmt | SumExp of Ast.stmt | RelOp of Ast.binOp | SumOp of Ast.binOp | Term of Ast.stmt | UnExp of Ast.stmt | MulOp of Ast.binOp | UnOp of Ast.unOp | Factor of Ast.stmt | Immut of Ast.immut
+      Program of Ast.stmt list | DeclList of Ast.stmt list | Decln of Ast.stmt | TypeSpec of Ast.types | VarDecInit of Ast.stmt |  ExpStmt of Ast.stmt | ComStmt of Ast.stmt | SelStmt of Ast.stmt | ItrStmt of Ast.stmt | Stmt of Ast.stmt | Stmts of Ast.stmt list | Exp of Ast.stmt | SimExp of Ast.stmt | AndExp of Ast.stmt | UnRelExp of Ast.stmt | RelExp of Ast.stmt | SumExp of Ast.stmt | RelOp of Ast.binOp | SumOp of Ast.binOp | Term of Ast.stmt | UnExp of Ast.stmt | MulOp of Ast.binOp | UnOp of Ast.unOp | Factor of Ast.stmt | Immut of Ast.immut
 
 %start Program
 %keyword IF WHILE ELSE INT CHAR
@@ -27,7 +27,18 @@
 
 %%
 
-Program : Stmts ()
+Program : DeclList Stmts ()
+
+DeclList : Decln DeclList ()
+	 | Decln 	  ()
+
+Decln : TypeSpec VarDecInit SEMICOLON (Ast.DeclStmt(TypeSpec, VarDeclList))
+
+VarDecInit : ID (Ast.Variable(Ast.mut(ID)))
+	   | ID ASSIGN SimExp (Ast.AssignStmt(Ast.Var(ID), SimExp))
+
+TypeSpec : INT  (Ast.INT)
+         | CHAR (Ast.CHAR)
 
 Stmts : Stmt Stmts ()
 
