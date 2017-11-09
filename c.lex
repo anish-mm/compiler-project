@@ -1,8 +1,10 @@
 
 type pos = int
 val linenum = ref 1
-type lexresult = Tokens.token
-fun eof() = Tokens.EOF()
+type svalue = Tokens.svalue
+type ('a, 'b) token = ('a, 'b) Tokens.token
+type lexresult = (svalue, pos) token
+fun eof() = Tokens.EOF(0, 0)
 val error = fn x => TextIO.output(TextIO.stdOut, x ^ "\n")
 
 %%
