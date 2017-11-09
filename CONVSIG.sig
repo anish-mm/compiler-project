@@ -5,6 +5,9 @@ sig
     val convVariable : string -> string
     val convBinOpStmt : string * string * string -> string
     val convUnOpStmt : string * string -> string
+    
+    val convPrePro  : unit -> string
+    val convPosPro  : unit -> string
 
     val convPlus : unit -> string
     val convMinus : unit -> string

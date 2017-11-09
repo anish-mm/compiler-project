@@ -6,13 +6,18 @@ sig
     val convStmt : Ast.stmt -> string
     val convStmts : Ast.stmt list -> string
     val convStmtSep : unit -> string
+    val convPrePro  : unit -> string
+    val convPosPro  : unit -> string
+    val convert     : Ast.stmt list -> string
 end
 
 functor Converter (Conv:CONVSIG) : CONVERTER =
   struct
 
     val convStmtSep = Conv.convStmtSepe
-    
+    val convPrePro  = Conv.convPreProc
+    val convPosPro  = Conv.convPosProc
+
     fun convBinOp (binop) = case  binop of
                               Ast.Plus   => Conv.convPlus()
                             | Ast.Minus  => Conv.convMinus()
@@ -50,5 +55,7 @@ functor Converter (Conv:CONVSIG) : CONVERTER =
     and convStmts (stmts) = case stmts of
                               x::xs => convStmt(x) ^ convStmtSep() ^ convStmts(xs)
                            |  []    => ""
+
+    fun convert (stmts) = convPrePro() ^ convStmts(stmts) ^ convPosPro()
 
   end
