@@ -3,7 +3,7 @@ struct
     datatype binOp = Plus | Minus | Mul | Div | Mod 
                    | Or | And 
                    | Eq | Neq | Gt | Lt | Leq | Geq
-    datatype unOp  = Plus | Minus | Not 
+    datatype unOp  = Uminus | Not 
     datatype immut = Integer of int | String of string
     datatype mut   = Var of string
     datatype types = INT | CHAR 

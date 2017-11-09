@@ -18,6 +18,7 @@
     | ASSIGN
     | OR | AND | NOT
     | EQ | NEQ | GT | LT | GEQ | LEQ 
+    | UMINUS
     | PLUS | MINUS | DIV | MUL | MOD
     | SEMICOLON | COMMA | LCURLY | RCURLY | RPAREN | LPAREN
 
@@ -100,11 +101,8 @@ MulOp : MUL (Ast.Mul)
       | DIV (Ast.Div)
       | MOD (Ast.Mod)
 
-UnExp : UnOp UnExp      (Ast.UnOpStmt(UnOp, UnExp))
+UnExp : UMINUS UnExp      (Ast.UnOpStmt(Ast.Uminus, UnExp))
       | Factor          (Factor)
-
-UnOp : PLUS     (Ast.Plus)
-     | MINUS    (Ast.Minus)
 
 Factor : ID     (Ast.Variable(Ast.Var(ID)))
        | Immut  (Immut)
