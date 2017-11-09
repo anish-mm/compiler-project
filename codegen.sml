@@ -6,4 +6,20 @@ functor Converter (Conv:CONVSIG) =
                         | Variable (Var(x))     => Conv.convVariable(x)
                         | BinOpStmt (x,binop,y) => Conv.convBinOpStmt(convExp(x), convBinOp(binOp), convExp(y))
                         | UnOpStmt (unop,x)     => Conv.convUnOpStmt(convUnOp(unop), convExp(x))
+
+    fun convBinOp (binop) = case  binop of
+                              Plus   => Conv.convPlus
+                            | Minus  => Conv.convMinus
+                            | Mul    => Conv.convMul
+                            | Div    => Conv.convDiv
+                            | Mod    => Conv.convMod
+                            | Or     => Conv.convOr
+                            | And    => Conv.convAnd
+                            | Eq     => Conv.convEq
+                            | Neq    => Conv.convNeq
+                            | Gt     => Conv.convGt
+                            | Lt     => Conv.convLt
+                            | Leq    => Conv.convLeq
+                            | Geq    => Conv.convGeq
+
   end
