@@ -23,8 +23,8 @@ noquote = [^"];
 <INITIAL>else    	 => (Tokens.ELSE(yypos, yypos + size yytext));
 <INITIAL>while    	 => (Tokens.WHILE(yypos, yypos + size yytext));
 <INITIAL>"!"             => (Tokens.NOT(yypos, yypos + size yytext));
-<INITIAL>"|"    	 => (Tokens.OR(yypos, yypos + size yytext));
-<INITIAL>"&"    	 => (Tokens.AND(yypos, yypos + size yytext));
+<INITIAL>"||"    	 => (Tokens.OR(yypos, yypos + size yytext));
+<INITIAL>"&&"    	 => (Tokens.AND(yypos, yypos + size yytext));
 <INITIAL>"=="	         => (Tokens.EQ(yypos, yypos + size yytext));
 <INITIAL>"="             => (Tokens.ASSIGN(yypos, yypos + size yytext));
 <INITIAL>"!="    	 => (Tokens.NEQ(yypos, yypos + size yytext));
@@ -41,16 +41,16 @@ noquote = [^"];
 <INITIAL>"("    	 => (Tokens.LPAREN(yypos, yypos + size yytext));
 <INITIAL>")"    	 => (Tokens.RPAREN(yypos, yypos + size yytext));
 <INITIAL>"{"    	 => (Tokens.LCURLY(yypos, yypos + size yytext));
-<INITIAL>"}"    	 => (Tokens.LCURLY(yypos, yypos + size yytext));
+<INITIAL>"}"    	 => (Tokens.RCURLY(yypos, yypos + size yytext));
 <INITIAL>","    	 => (Tokens.COMMA(yypos, yypos + size yytext));
 
 
 {id}                     => (Tokens.ID(yytext, yypos, yypos + size yytext));
 {space}+        	 => (continue());
-{digit}+                 => (Tokens.INTVAL(yytext, yypos, yypos + size yytext));
+{digit}+                 => (Tokens.INTVAL(Option.getOpt(Int.fromString(yytext), 0), yypos, yypos + size yytext));
 {quote}{noquote}*{quote} => (Tokens.STRING(yytext, yypos, yypos + size yytext));
 "\n"                     => (linenum := (!linenum) + 1; continue());
-
+" "                      => (continue());
 . 			 => (error("unknown character " ^ yytext ^ " found on line : " ^Int.toString(!linenum)); continue());
 
 
