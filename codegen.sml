@@ -31,7 +31,7 @@ functor Converter (Conv:CONVSIG) : CONVERTER =
                           Ast.Const (Ast.Integer(x))    => Conv.convConstInteger(x)
                         | Ast.Const (Ast.String(x))     => Conv.convConstString(x)
                         | Ast.Variable (Ast.Var(x))     => Conv.convVariable(x)
-                        | Ast.BinOpStmt (x,binop,y) 	=> Conv.convBinOpStmt(convExp(x), convBinOp(binOp), convExp(y))
+                        | Ast.BinOpStmt (x,binop,y) 	=> Conv.convBinOpStmt(convExp(x), convBinOp(binop), convExp(y))
                         | Ast.UnOpStmt (unop,x)     	=> Conv.convUnOpStmt(convUnOp(unop), convExp(x))
 
     fun convStmt (stmt) = case stmt of
