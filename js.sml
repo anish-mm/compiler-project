@@ -21,4 +21,7 @@ structure  Conv :CONVSIG =
     fun convLeq ()   = "<="
     fun convGeq ()   = ">="
 
+    fun convUminus () = "-"
+    fun convNot ()    = "!"
+
   end
