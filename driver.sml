@@ -1,4 +1,4 @@
-structure Parse =
+(*structure Parse =
 struct
     fun parse fileName = 
         let 
@@ -16,4 +16,6 @@ struct
 end;
 
 Parse.parse "dummy.txt";
+*)
 
+parse "dummy.txt";
