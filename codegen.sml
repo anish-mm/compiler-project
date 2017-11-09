@@ -9,13 +9,6 @@ end
 
 functor Converter (Conv:CONVSIG) : CONVERTER =
   struct
-    fun convExp (exp) = case exp of
-                          Ast.Const (Ast.Integer(x))    => Conv.convConstInteger(x)
-                        | Ast.Const (Ast.String(x))     => Conv.convConstString(x)
-                        | Ast.Variable (Ast.Var(x))     => Conv.convVariable(x)
-                        | Ast.BinOpStmt (x,binop,y) 	=> Conv.convBinOpStmt(convExp(x), convBinOp(binOp), convExp(y))
-                        | Ast.UnOpStmt (unop,x)     	=> Conv.convUnOpStmt(convUnOp(unop), convExp(x))
-
     fun convBinOp (binop) = case  binop of
                               Ast.Plus   => Conv.convPlus()
                             | Ast.Minus  => Conv.convMinus()
@@ -34,6 +27,12 @@ functor Converter (Conv:CONVSIG) : CONVERTER =
     fun convUnOp (unop) = case unop of
                             Ast.Uminus   => Conv.convUminus()
                           | Ast.Not      => Conv.convNot()
+    fun convExp (exp) = case exp of
+                          Ast.Const (Ast.Integer(x))    => Conv.convConstInteger(x)
+                        | Ast.Const (Ast.String(x))     => Conv.convConstString(x)
+                        | Ast.Variable (Ast.Var(x))     => Conv.convVariable(x)
+                        | Ast.BinOpStmt (x,binop,y) 	=> Conv.convBinOpStmt(convExp(x), convBinOp(binOp), convExp(y))
+                        | Ast.UnOpStmt (unop,x)     	=> Conv.convUnOpStmt(convUnOp(unop), convExp(x))
 
     fun convStmt (stmt) = case stmt of
                             Ast.AssignStmt (Ast.Var(x), y) => Conv.convAssignStmt(x, convExp(y))
