@@ -1,7 +1,9 @@
 $(SML_LIB)/basis/basis.mlb
 $(SML_LIB)/basis/unsafe.mlb
-tokens.sig
-tokens.sml
+$(SML_LIB)/mlyacc-lib/mlyacc-lib.mlb
+
+ast.sml
+c.grm.sig
+c.grm.sml
 c.lex.sml
 driver.sml
-
