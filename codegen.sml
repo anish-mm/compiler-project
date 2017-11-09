@@ -25,4 +25,14 @@ functor Converter (Conv:CONVSIG) =
     fun convUnOp (unop) = case unop of
                             Uminus   => Conv.convUminus
                           | Not      => Conv.convNot
+
+    fun convStmt (stmt) = case stmt of
+                            AssignStmt (Var(x), y) => Conv.convAssignStmt(x, convExp(y))
+                          | Variable (Var(x))      => Conv.convVariable(x)
+                          | DeclStmt (INT, x)      => Conv.convDeclStmtInt(convStmt(x))
+                          | DeclStmt (CHAR, x)     => Conv.convDeclStmtChar(convStmt(x))
+                          | IfStmt (x, y, z)       => Conv.convIfStmt(convExp(x), convStmt(y), convStmt(z))
+                          | WhileStmt(x, y)        => Conv.convWhileStmt(convExp(x), convStmt(y))
+                          | CompStmt(x::xs)        => Conv.convCompStmt(convStmt(x), convStmts(xs))
+
   end
