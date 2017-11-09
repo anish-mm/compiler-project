@@ -18,4 +18,4 @@ end;
 Parse.parse "dummy.txt";
 *)
 
-parse "dummy.txt";
+C.parse "dummy.txt";
