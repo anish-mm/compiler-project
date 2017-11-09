@@ -18,7 +18,9 @@ struct
     fun parse fileName =
         let
             val file = TextIO.openIn fileName
-            fun get _ = LrParser.Stream.streamify(Lex.makeLexer get)
+            fun get _ = TextIO.input file
+            val lexer = LrParser.Stream.streamify(CLex.makeLexer get)
+            
             fun print_error(s, i, j) = print ("Error : " ^ s ^ ", position : " ^  (Int.toString i) ^" "^  (Int.toString j))
             val (ast, _) = CParser.parse(0, lexer, print_error, ())
         in
