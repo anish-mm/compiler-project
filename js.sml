@@ -27,8 +27,10 @@ structure  Conv :CONVSIG =
     fun convAssignStmt (x, y)   = x ^ " = " ^ y
     fun convDeclStmtInt (x)     = "var " ^ x
     fun convDeclStmtChar (x)    = "var " ^ x
-    fun convIfStmt (x, y, z)    = "if (" ^ x ^ ")\n" ^ y ^ "\nelse\n" ^ z ^ "\n"
-    fun convWhileStmt (x, y)    = "while (" ^ x ^ ")\n" ^ y ^ "\n"
-    fun convCompStmt (x)        = "{\n" ^ x ^ "\n}"
+    fun convIfStmt (x, y, z)    = "if (" ^ x ^ ")\n" ^ y ^ "\nelse\n" ^ z
+    fun convWhileStmt (x, y)    = "while (" ^ x ^ ")\n" ^ y
+    fun convCompStmt (x)        = "{\n" ^ x ^ "}"
+
+    fun convStmtSepe () = ";\n"
 
   end

@@ -13,12 +13,12 @@ sig
     val convMul : unit -> string
     val convOr : unit -> string
     val convAnd : unit -> string
-    val convEq : unit -> string 
-    val convNeq : unit -> string 
-    val convGt : unit -> string 
-    val convLt : unit -> string 
-    val convLeq : unit -> string 
-    val convGeq : unit -> string 
+    val convEq : unit -> string
+    val convNeq : unit -> string
+    val convGt : unit -> string
+    val convLt : unit -> string
+    val convLeq : unit -> string
+    val convGeq : unit -> string
 
     val convUminus : unit -> string
     val convNot : unit -> string
@@ -28,5 +28,7 @@ sig
     val convDeclStmtChar : string -> string
     val convIfStmt : string * string * string -> string
     val convWhileStmt : string * string -> string
-    val convCompStmt : string -> string  
+    val convCompStmt : string -> string
+
+    val convStmtSepe : unit -> string
 end
