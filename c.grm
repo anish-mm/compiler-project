@@ -23,7 +23,7 @@
     | SEMICOLON | COMMA | LCURLY | RCURLY | RPAREN | LPAREN
 
 %nonterm
-      Program of Ast.stmt list | DeclList of Ast.stmt list | Decln of Ast.stmt | TypeSpec of Ast.types | VarDecInit of Ast.stmt |  ExpStmt of Ast.stmt | ComStmt of Ast.stmt | SelStmt of Ast.stmt | ItrStmt of Ast.stmt | Stmt of Ast.stmt | Stmts of Ast.stmt list | Exp of Ast.stmt | SimExp of Ast.stmt | AndExp of Ast.stmt | UnRelExp of Ast.stmt | RelExp of Ast.stmt | SumExp of Ast.stmt | RelOp of Ast.binOp | SumOp of Ast.binOp | Term of Ast.stmt | UnExp of Ast.stmt | MulOp of Ast.binOp | UnOp of Ast.unOp | Factor of Ast.stmt | Immut of Ast.stmt
+      Program of Ast.stmt list | DeclList of Ast.stmt list | Decln of Ast.stmt | TypeSpec of Ast.types | VarDecInit of Ast.stmt |  ExpStmt of Ast.stmt | ComStmt of Ast.stmt | SelStmt of Ast.stmt | ItrStmt of Ast.stmt | Stmt of Ast.stmt | Stmts of Ast.stmt list | Exp of Ast.stmt | SimExp of Ast.stmt | AndExp of Ast.stmt | UnRelExp of Ast.stmt | RelExp of Ast.stmt | SumExp of Ast.stmt | RelOp of Ast.binOp | SumOp of Ast.binOp | Term of Ast.stmt | UnExp of Ast.stmt | MulOp of Ast.binOp | Factor of Ast.stmt | Immut of Ast.stmt
 
 %start Program
 %keyword IF WHILE ELSE INT CHAR
@@ -59,7 +59,7 @@ Stmt : ExpStmt  (ExpStmt)
 ExpStmt : Exp SEMICOLON        (Exp)
         | SEMICOLON            (Ast.EmptyStmt)
 
-SelStmt : IF LPAREN SimExp RPAREN Stmt ELSE Stmt  (Ast.IfStmt(SimExp, Stmt1, Stmt2))
+SelStmt : IF LPAREN SimExp RPAREN Stmt ELSE Stmt (Ast.IfStmt(SimExp, Stmt1, Stmt2))
         | IF LPAREN SimExp RPAREN Stmt  (Ast.IfStmt(SimExp, Stmt, Ast.EmptyStmt))
          
 ItrStmt : WHILE LPAREN SimExp RPAREN ComStmt (Ast.WhileStmt(SimExp, ComStmt))
