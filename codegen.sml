@@ -33,7 +33,7 @@ functor Converter (Conv:CONVSIG) =
                           | DeclStmt (CHAR, x)     => Conv.convDeclStmtChar(convStmt(x))
                           | IfStmt (x, y, z)       => Conv.convIfStmt(convExp(x), convStmt(y), convStmt(z))
                           | WhileStmt(x, y)        => Conv.convWhileStmt(convExp(x), convStmt(y))
-                          | CompStmt(x::xs)        => Conv.convCompStmt(convStmt(x), convStmts(xs))
+                          | CompStmt(x)            => Conv.convCompStmt(convStmts(x))
 
     fun convStmts (stmts) = case stmts  of
                               x::xs => convStmt(x) ^ convStmts(xs)
