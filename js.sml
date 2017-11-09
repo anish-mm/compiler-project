@@ -33,4 +33,6 @@ structure  Conv :CONVSIG =
 
     fun convStmtSepe () = ";\n"
 
+    fun convPreProc ()  = "<!DOCTYPE html>\n<title>\n<script>\n"
+    fun convPosProc() = "</script>\n</title>\n</html>\n"
   end
