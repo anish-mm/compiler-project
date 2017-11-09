@@ -22,4 +22,7 @@ functor Converter (Conv:CONVSIG) =
                             | Leq    => Conv.convLeq
                             | Geq    => Conv.convGeq
 
+    fun convUnOp (unop) = case unop of
+                            Uminus   => Conv.convUminus
+                          | Not      => Conv.convNot
   end
