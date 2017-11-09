@@ -5,7 +5,7 @@ structure  Conv :CONVSIG =
     fun convConstString (x)            = x
     fun convVariable (x)               = x
     fun convBinOpStmt(x, binop, y)     = x ^ " " ^ binop ^ " " ^ y
-    fun convUnOpStmt(unop, x)          = unop ^ x
+    fun convUnOpStmt(unop, x)          = unop ^ "(" ^ x ^ ")"
 
     fun convPlus ()  = "+"
     fun convDiv ()   = "/"
