@@ -2,6 +2,13 @@
 %%
 %name C
 %pos int
+%left OR
+%left AND
+%left EQ NEQ
+%left LT GT LEQ GEQ
+%left PLUS MINUS
+%left DIV MUL MOD
+
 %term
       EOF
     | INT | CHAR
