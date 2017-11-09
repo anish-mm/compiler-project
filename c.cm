@@ -4,6 +4,10 @@ ast.sml
 c.lex
 c.grm:MLYacc
 c.sml
+CONVSIG.sig
+codegen.sml
+js.sml
+write.sml
 $/ml-yacc-lib.cm
 $/basis.cm
 $/smlnj-lib.cm
