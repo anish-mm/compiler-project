@@ -1,4 +1,13 @@
-functor Converter (Conv:CONVSIG) =
+signature CONVERTER =
+sig
+    val convBinOp : Ast.binOp -> string
+    val convUnOp : Ast.unOp -> string
+    val convExp : Ast.stmt -> string
+    val convStmt : Ast.stmt -> string
+    val convStmts : Ast.stmt list -> string
+end
+
+functor Converter (Conv:CONVSIG) : CONVERTER =
   struct
     fun convExp (exp) = case exp of
                           Ast.Const (Ast.Integer(x))    => Conv.convConstInteger(x)
