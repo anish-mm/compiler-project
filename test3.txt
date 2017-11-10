@@ -1,0 +1,11 @@
+int a = 5;
+int b = 0;
+print(a);
+print("hii");
+if ( if(a == 5) print(a);){
+	print(b);
+	a = a + 10;
+}
+for (b = 0; b < 10 ; b++) {
+	print(b);
+}
