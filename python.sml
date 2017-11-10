@@ -28,4 +28,7 @@ structure  ConvPython :CONVSIG =
     fun convLeq ()   = "<="
     fun convGeq ()   = ">="
 
+    fun convUminus () = "-"
+    fun convNot ()    = "not"
+
   end
