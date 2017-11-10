@@ -14,5 +14,5 @@ val convertFromAst = case CommandLine.arguments() of
                                                 writeFile opf       cont
                                                
                                            end
-                     | _ => (TextIO.output(TextIO.stdErr, "usage:"); OS.Process.exit OS.Process.failure)
+                     | _ => (TextIO.output(TextIO.stdErr, "usage: ./c input_file_name output_file_name\n"); OS.Process.exit OS.Process.failure)
 
