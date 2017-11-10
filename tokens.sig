@@ -35,6 +35,7 @@ sig
     val LCURLY : linenum * linenum -> token
     val RCURLY : linenum * linenum -> token
 
+    val PRINT : linenum *linenum -> token
+
     val EOF : unit -> token
 end
-
