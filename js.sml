@@ -37,6 +37,6 @@ structure  ConvJs :CONVSIG =
 
     fun convStmtSepe () = ";\n"
 
-    fun convPreProc ()  = "<!DOCTYPE html>\n<title>\n<script>\n"
-    fun convPosProc() = "</script>\n</title>\n</html>\n"
+    fun convPreProc ()  = "<!DOCTYPE html>\n<html><head><title>compiler</title>\n<script>\n"
+    fun convPosProc() = "</script>\n</head><body></body>\n</html>\n"
   end
