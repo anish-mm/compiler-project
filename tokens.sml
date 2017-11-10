@@ -1,4 +1,4 @@
-structure Tokens : TOKENS = 
+structure Tokens : TOKENS =
 struct
     type linenum 	= int
     type token 	        = string
@@ -32,4 +32,5 @@ struct
     fun NOT(i,j)        = "NOT  " ^ Int.toString(i)
     fun COMMA(i,j) 	= "COMMA  " ^ Int.toString(i)
     fun MOD(i,j) 	= "MOD   " ^ Int.toString(i)
-end 
+    fun PRINT(i,j) = "PRINT" ^ Int.toString(i)
+end
