@@ -11,7 +11,7 @@ val convertFromAst = case CommandLine.arguments() of
                        [inpf,opf]       => let val astt 	    = C.parse inpf
                                                val cont 	    = a.convert astt
                                            in 
-                                                writeFile opf       cont
+                                                writeFile (opf ^ ".html") cont
                                                
                                            end
                      | _ => (TextIO.output(TextIO.stdErr, "usage: ./c input_file_name output_file_name\n"); OS.Process.exit OS.Process.failure)
