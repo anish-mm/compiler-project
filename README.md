@@ -23,6 +23,7 @@ A Compiler implementation done as part of Language Translators Course.
       * a test program in C-
 
 ## Execution
+* if changes made to `c.lex` or `c.grm` file, run `mllex c.lex` followed by `mlyacc c.grm` respectively.
 * run `mlton c.mlb` to get executable.
 * run `./c inp_file_name op_file_name` to generate code, where `inp_file_name` is the path to input file containing __C-__ code and `op_file_name` is the name of output file (without extensions).
 * javascript code will be generated in __op_file_name.html__ file (js code will be inserted within `<script>` tags).
@@ -30,5 +31,5 @@ A Compiler implementation done as part of Language Translators Course.
 * in firefox, press `Ctrl + Shift + I` to open console. Outputs of `print` statements will be shown here.
 
 ## Team Members
-Anish M M, 111501006
-Vaka Sai Nishanth, 111501038
+* Anish M M, 111501006
+* Vaka Sai Nishanth, 111501038
