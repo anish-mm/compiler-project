@@ -27,6 +27,7 @@ A Compiler implementation done as part of Language Translators Course.
 * run `./c inp_file_name op_file_name` to generate code, where `inp_file_name` is the path to input file containing __C-__ code and `op_file_name` is the name of output file (without extensions).
 * javascript code will be generated in __op_file_name.html__ file (js code will be inserted within `<script>` tags).
 * to run the generated code, run `firefox op_file_name.html`
+* in firefox, press `Ctrl + Shift + I` to open console. Outputs of `print` statements will be shown here.
 
 ## Team Members
 Anish M M, 111501006
