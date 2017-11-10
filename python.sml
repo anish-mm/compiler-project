@@ -14,4 +14,18 @@ structure  ConvPython :CONVSIG =
     fun convBinOpStmt(x, binop, y)     = x ^ " " ^ binop ^ " " ^ y
     fun convUnOpStmt(unop, x)          = unop ^ "(" ^ x ^ ")"
 
+    fun convPlus ()  = "+"
+    fun convDiv ()   = "/"
+    fun convMod ()   = "%"
+    fun convOr ()    = "or"
+    fun convAnd ()   = "and"
+    fun convMinus () = "-"
+    fun convMul ()   = "*"
+    fun convEq ()    = "=="
+    fun convNeq ()   = "!="
+    fun convGt ()    = ">"
+    fun convLt ()    = "<"
+    fun convLeq ()   = "<="
+    fun convGeq ()   = ">="
+
   end
