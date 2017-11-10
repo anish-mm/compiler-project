@@ -33,6 +33,7 @@ structure  ConvJs :CONVSIG =
     fun convWhileStmt (x, y)    = "while (" ^ x ^ ")\n" ^ y
     fun convCompStmt (x)        = "{\n" ^ x ^ "}"
     fun convEmptyStmt ()        = ""
+    fun convPrintStmt (x)       = "console.log (" ^ x ^ ")"
 
     fun convStmtSepe () = ";\n"
 

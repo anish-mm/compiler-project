@@ -33,6 +33,7 @@ sig
     val convWhileStmt : string * string -> string
     val convCompStmt : string -> string
     val convEmptyStmt : unit -> string
+    val convPrintStmt : string -> string
 
     val convStmtSepe : unit -> string
 end

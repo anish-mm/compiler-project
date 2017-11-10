@@ -18,5 +18,6 @@ struct
                    | UnOpStmt of unOp * stmt
                    | WhileStmt of stmt * stmt
                    | CompStmt of stmt list
+                   | PrintStmt of stmt
 
 end
