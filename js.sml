@@ -1,4 +1,4 @@
-structure  Conv :CONVSIG =
+structure  ConvJs :CONVSIG =
   struct
 
     fun convConstInteger (x)           = Int.toString(x)
