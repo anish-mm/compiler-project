@@ -27,9 +27,12 @@ structure  ConvJs :CONVSIG =
     fun convAssignStmt (x, y)   = x ^ " = " ^ y
     fun convDeclStmtInt (x)     = "var " ^ x
     fun convDeclStmtChar (x)    = "var " ^ x
-    fun convIfStmt (x, y, z)    = "if (" ^ x ^ ")\n" ^ y ^ "\nelse\n" ^ z
+    fun convIfStmt (x, y, z)    = case z of
+                                    "" => "if (" ^ x ^ ")\n" ^ y ^ "\n"
+                                  | _  => "if (" ^ x ^ ")\n" ^ y ^ "\nelse\n" ^ z
     fun convWhileStmt (x, y)    = "while (" ^ x ^ ")\n" ^ y
     fun convCompStmt (x)        = "{\n" ^ x ^ "}"
+    fun convEmptyStmt ()        = ""
 
     fun convStmtSepe () = ";\n"
 

@@ -51,6 +51,7 @@ functor Converter (Conv:CONVSIG) : CONVERTER =
                           | Ast.IfStmt (x, y, z)       	   => Conv.convIfStmt(convExp(x), convStmt(y), convStmt(z))
                           | Ast.WhileStmt(x, y)            => Conv.convWhileStmt(convExp(x), convStmt(y))
                           | Ast.CompStmt(x)                => Conv.convCompStmt(convStmts(x))
+                          | Ast.EmptyStmt                  => Conv.convEmptyStmt()
 
     and convStmts (stmts) = case stmts of
                               x::xs => convStmt(x) ^ convStmtSep() ^ convStmts(xs)

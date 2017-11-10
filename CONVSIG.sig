@@ -32,6 +32,7 @@ sig
     val convIfStmt : string * string * string -> string
     val convWhileStmt : string * string -> string
     val convCompStmt : string -> string
+    val convEmptyStmt : unit -> string
 
     val convStmtSepe : unit -> string
 end
