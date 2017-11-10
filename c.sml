@@ -13,7 +13,7 @@ struct
             fun get _ = TextIO.input file
             val lexer = LrParser.Stream.streamify(CLex.makeLexer get)
 
-            fun print_error(s, i, j) = print ("Error : " ^ s ^ ", position : " ^  (Int.toString i) ^" "^  (Int.toString j))
+            fun print_error(s, i, j) = print ("Error : " ^ s ^ ", position : " ^  (Int.toString i) ^" "^  (Int.toString j) ^ "\n")
             val (ast, _) = CParser.parse(0, lexer, print_error, ())
         in
             TextIO.closeIn file;
