@@ -6,13 +6,15 @@ fun writeFile filename content =
     in () end
 
 structure a    	= Converter(ConvJs);
+structure b     = Converter(ConvPython);
 
 val convertFromAst = case CommandLine.arguments() of
                        [inpf,opf]       => let val astt 	    = C.parse inpf
-                                               val cont 	    = a.convert astt
+                                               val contjs 	    = a.convert astt
+                                               val contpy       = b.convert astt
                                            in 
-                                                writeFile (opf ^ ".html") cont
-                                               
+                                                writeFile (opf ^ ".html") contjs;
+						writeFile (opf ^ ".py") contpy
                                            end
                      | _ => (TextIO.output(TextIO.stdErr, "usage: ./c input_file_name output_file_name\n"); OS.Process.exit OS.Process.failure)
 

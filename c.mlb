@@ -9,5 +9,6 @@ c.lex.sml
 c.sml
 CONVSIG.sig
 js.sml
+python.sml
 codegen.sml
 write.sml
