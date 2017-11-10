@@ -82,7 +82,7 @@ AndExp : UnRelExp AND AndExp (Ast.BinOpStmt(UnRelExp, Ast.And, AndExp))
 UnRelExp : NOT UnRelExp (Ast.UnOpStmt(Ast.Not, UnRelExp))
          | RelExp       (RelExp)
 
-RelExp : SumExp RelOp SumExp    (Ast.BinOpStmt(SumExp, RelOp, SumExp))
+RelExp : SumExp RelOp SumExp    (Ast.BinOpStmt(SumExp1, RelOp, SumExp2))
        | SumExp                 (SumExp)
 
 RelOp   : EQ  (Ast.Eq)
